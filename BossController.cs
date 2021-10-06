@@ -12,10 +12,11 @@ public class BossController : MonoBehaviour
     //public List<GameObject> WinText = new List<GameObject>();
     private int count=6;
     private float t=0;
+    private Vector3 Pos;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Pos = this.gameObject.GetComponent<Transform>().position;
     
     }
 
@@ -24,11 +25,17 @@ public class BossController : MonoBehaviour
     {
         if(count<=0)
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.GetComponent<SpriteRenderer>().sortingLayer = ("groundplane");
+            Pos.x = 1000;
+            Pos.y = 1000;
+            Pos.z = 1000;
+            this.gameObject.transform.position = Pos;
+            //this.gameObject.SetActive(false);
             t+=Time.deltaTime;
-            if(t>2)
+            if(t>1)
             {
                 SceneManager.LoadScene("End");
+                
             }
             
             //Instantiate(Win,this.gameObject.transform.position,Quaternion.identity);
